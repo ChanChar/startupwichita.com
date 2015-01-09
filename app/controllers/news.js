@@ -91,7 +91,7 @@ exports.show = function(req, res) {
 exports.all = function(req, res) {
     News.find({ spam: { $ne: true }})
         .populate('author')
-        .sort('-title')
+        .sort('-created_at')
         .exec(function(err, news) {
             if (err) return res.send(500, { errors: Formatter.errorsToArray(err.errors) });
 

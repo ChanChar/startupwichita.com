@@ -36,6 +36,7 @@
 
             $scope.getFeaturedEvents = function() {
                 Events.query({}, function(events) {
+                    events = events.filter(function(e) { var d = new Date(e.startTime); var now = new Date(); return d > now; });
                     $scope.firstTwoEvents = events.slice(0, 2);
                     $scope.featuredEvents = events.slice(2, 6);
                 });
